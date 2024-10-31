@@ -12,22 +12,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	{
-        "stevearc/oil.nvim",
-        opts = {},
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-	},
+    require("vamshidhar.plugins.oil.oil_plugin"),
+    require("vamshidhar.plugins.lualine.lualine_plugin"),
+    -- require("vamshidhar.plugins.markdown.markdown_plugin"),
+    require("vamshidhar.plugins.markdown-preview.markdown_preview_plugin"),
+    require("vamshidhar.plugins.theme-plugins.my_theme").plugin,
 	"nvim-treesitter/nvim-treesitter",
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-	},
 	"windwp/nvim-autopairs",
 	-- [[telescope]]
 	{
@@ -78,7 +68,7 @@ local plugins = {
 
 		"rafamadriz/friendly-snippets",
 	}, -- using lazy.nvim
---[[	{
+	--[[	{
 		"S1M0N38/love2d.nvim",
 		cmd = "LoveRun",
 		opts = {},

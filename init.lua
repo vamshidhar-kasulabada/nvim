@@ -8,13 +8,13 @@ require("vamshidhar.basic.keymaps")
 -- Lazy should be loaded before any other plugin
 require("vamshidhar.lazy")
 
-require("vamshidhar.theme-plugins.catppuccin")
+require("vamshidhar.plugins.theme-plugins.my_theme").config()
 
 require("vamshidhar.plugins.nvim-treesitter")
 
-require("vamshidhar.plugins.oil")
+require("vamshidhar.plugins.oil.oil_config")
 
-require("vamshidhar.plugins.lualine")
+require("vamshidhar.plugins.lualine.lualine_config")
 
 require("vamshidhar.plugins.nvim-autopairs")
 

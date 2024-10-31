@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "tsserver" },
+	ensure_installed = { "lua_ls", "ts_ls" },
 })
 
 local function on_attach()
@@ -44,7 +44,7 @@ require("lspconfig").lua_ls.setup({
 	},
 })
 
-require("lspconfig").tsserver.setup({
+require("lspconfig").ts_ls.setup({
 	on_attach = on_attach,
 })
 
@@ -54,6 +54,10 @@ require("lspconfig").clangd.setup({
 
 require("lspconfig").cssls.setup({
 	on_attach = on_attach,
+})
+
+require("lspconfig").angularls.setup({
+    on_attach = on_attach,
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -72,3 +76,4 @@ require("lspconfig").emmet_ls.setup({
 		},
 	},
 })
+
