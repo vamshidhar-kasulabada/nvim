@@ -8,8 +8,8 @@ local function on_attach()
 	keymap("n", "gr", "<Cmd> lua vim.lsp.buf.rename()<CR>", opts)
 	keymap("n", "ga", "<Cmd> lua vim.lsp.buf.code_action()<CR>", opts)
 	keymap("n", "gH", "<Cmd> lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", {
-        desc = "Toggle Inlay Hints"
-    })
+		desc = "Toggle Inlay Hints",
+	})
 	keymap("n", "<leader>co", "<Cmd>lua require'jdtls'.organize_imports()<CR>", { desc = "Organize Imports" })
 	keymap("n", "<leader>crv", "<Cmd>lua require('jdtls').extract_variable()<CR>", { desc = "Extract Variable" })
 	keymap(
@@ -41,8 +41,20 @@ local config = {
     on_attach = on_attach,
 }
 ]]
-local home = os.getenv("HOME")
-local workspace_path = home .. "/.local/share/nvim/jdtls-workspace/"
+
+local home
+local workspace_path
+
+local os_type = require("lib.detectOs")
+
+if os_type == "Windows" then
+	home = os.getenv("HOMEPATH")
+	workspace_path = home .. "\\AppData\\Local\\nvim-data"
+else
+	home = os.getenv("HOME")
+	workspace_path = home .. "/.local/share/nvim/jdtls-workspace/"
+end
+
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = workspace_path .. project_name
 
